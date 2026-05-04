@@ -1,0 +1,7 @@
+- Prefer whole-system outcomes over local wins.
+- Prefer composition over inheritance.
+- Define the boundary, purpose, and context before acting.
+- Optimize end to end, not by component alone.
+- Treat interfaces, dependencies, and handoffs as first-class design concerns.
+- Assume feedback loops and emergent behavior.
+- Fix the system behind the symptom.

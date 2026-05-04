@@ -1,0 +1,1 @@
+- Do not use `rm` with `-f` flag.  It may have unintended consequences.
