@@ -37,10 +37,13 @@ def resample_gpx(gpx: gpxpy.gpx.GPX, max_points: int) -> None:
     if total_points <= max_points:
         return
     
-    # Binary search for the optimal max_distance to hit the target max_points
-    # We keep the best candidate that respects the max_points limit
+    # Heuristic: the average distance between points if distributed evenly
+    # provides a good order-of-magnitude guess for the RDP distance threshold.
+    length_2d = gpx.length_2d()
+    initial_guess = length_2d / max_points if max_points > 0 else 100.0
+    
     low = 0.0
-    high = 100.0  # Initial high guess in meters, will double if needed
+    high = max(1.0, initial_guess)  # Initial high guess in meters, will double if needed
     
     # Find an initial upper bound
     candidate = gpx.clone()
